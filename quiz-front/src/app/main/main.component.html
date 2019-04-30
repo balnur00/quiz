@@ -1,0 +1,19 @@
+<ng-container *ngIf="!logged">
+  <div class="authorization">
+    <div><input type="text" [(ngModel)]="username"></div>
+    <div><input type="password" [(ngModel)]="password"></div>
+    <div><button (click)="auth()">Log in</button></div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="logged">
+  <div>
+    <h1>Posts</h1>
+    <div *ngFor="let p of post" (click)="getPostFromList(p)">
+     <span (click)="showBody(p)"> {{p.title}} : {{p.created_at}} : {{p.like_count}}</span>
+    </div>
+  </div>
+  <div>
+    <button (click)="logout()">Log out</button>
+  </div>
+</ng-container>
